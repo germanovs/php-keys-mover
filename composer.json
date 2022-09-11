@@ -1,0 +1,17 @@
+{
+    "name": "germanovs/php-keys-mover",
+    "description": "Allows you to change keys positions in arrays",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergey Germanov",
+            "email": "germanov400@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
