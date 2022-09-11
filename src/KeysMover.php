@@ -1,4 +1,5 @@
 <?php
+namespace KeysMover;
 
 class KeysMover {
 
@@ -27,14 +28,14 @@ class KeysMover {
 		*/
 
 		if ($targetIndex === 0) {
-			echo '<pre>';
-			print_r('move max up');
-			echo '</pre>';
+			// echo '<pre>';
+			// print_r('move max up');
+			// echo '</pre>';
 			uksort($array, function ($prev, $next) use ($what) {
-				echo '<pre>';
-				print_r('Prev is: ' . $prev . '<br>');
-				print_r('Next is: ' . $next);
-				echo '</pre>';
+				// echo '<pre>';
+				// print_r('Prev is: ' . $prev . '<br>');
+				// print_r('Next is: ' . $next);
+				// echo '</pre>';
 
 				if ($next === $what) {
 					return 1;
@@ -44,14 +45,14 @@ class KeysMover {
 			});
 			return true;
 		} elseif ($targetIndex === (count($keys) - 1)) {
-			echo '<pre>';
-			print_r('move max down');
-			echo '</pre>';
+			// echo '<pre>';
+			// print_r('move max down');
+			// echo '</pre>';
 			uksort($array, function ($prev, $next) use ($what) {
-				echo '<pre>';
-				print_r('Prev is: ' . $prev . '<br>');
-				print_r('Next is: ' . $next);
-				echo '</pre>';
+				// echo '<pre>';
+				// print_r('Prev is: ' . $prev . '<br>');
+				// print_r('Next is: ' . $next);
+				// echo '</pre>';
 
 				if ($prev === $what) {
 					return 1;
@@ -80,24 +81,24 @@ class KeysMover {
 			return true;
 		}
 
-		echo '<pre>';
-		print_r($sortingDirection);
-		print_r($stopKey);
-		echo '</pre>';
+		// echo '<pre>';
+		// print_r($sortingDirection);
+		// print_r($stopKey);
+		// echo '</pre>';
 
 		if ($sortingDirection === 1) {
 			uksort($array, function($prev, $next) use ($what, $stopKey)
 			{
-				echo '<pre>';
-				print_r('Prev is: '.$prev.'<br>');
-				print_r('Next is: '.$next);
-				echo '</pre>';
+				// echo '<pre>';
+				// print_r('Prev is: '.$prev.'<br>');
+				// print_r('Next is: '.$next);
+				// echo '</pre>';
 	
 				if ($next === $what) {
 					if ($prev !== $stopKey) {
-						echo '<pre>';
-						print_r('sort up');
-						echo '</pre>';
+						// echo '<pre>';
+						// print_r('sort up');
+						// echo '</pre>';
 						return 1;
 					}
 				}
@@ -107,16 +108,16 @@ class KeysMover {
 		} else {
 			uksort($array, function($prev, $next) use ($what, $stopKey)
 			{
-				echo '<pre>';
-				print_r('Prev is: '.$prev.'<br>');
-				print_r('Next is: '.$next);
-				echo '</pre>';
+				// echo '<pre>';
+				// print_r('Prev is: '.$prev.'<br>');
+				// print_r('Next is: '.$next);
+				// echo '</pre>';
 	
 				if ($prev === $what) {
 					if ($next !== $stopKey) {
-						echo '<pre>';
-						print_r('sort down');
-						echo '</pre>';
+						// echo '<pre>';
+						// print_r('sort down');
+						// echo '</pre>';
 						return 1;
 					}
 				}
