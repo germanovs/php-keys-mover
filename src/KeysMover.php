@@ -22,44 +22,16 @@ class KeysMover {
 		}
 		
 		/* 
-		если таргетИндекс = 0, просто поднимаем ключ максимально вверх
-		если таргерИндекс = длине массива, т.е. он должен стоять в конце, опускаем максимально вниз
-		иначе сортируем
+		if target index === 0, move key max up
+		if target index === array length, move key max in the end
+		else make sorting with rules
 		*/
 
 		if ($targetIndex === 0) {
-			// echo '<pre>';
-			// print_r('move max up');
-			// echo '</pre>';
-			uksort($array, function ($prev, $next) use ($what) {
-				// echo '<pre>';
-				// print_r('Prev is: ' . $prev . '<br>');
-				// print_r('Next is: ' . $next);
-				// echo '</pre>';
-
-				if ($next === $what) {
-					return 1;
-				}
-
-				return 0;
-			});
+			$this->sortMaxUp($array, $what);
 			return true;
 		} elseif ($targetIndex === (count($keys) - 1)) {
-			// echo '<pre>';
-			// print_r('move max down');
-			// echo '</pre>';
-			uksort($array, function ($prev, $next) use ($what) {
-				// echo '<pre>';
-				// print_r('Prev is: ' . $prev . '<br>');
-				// print_r('Next is: ' . $next);
-				// echo '</pre>';
-
-				if ($prev === $what) {
-					return 1;
-				}
-
-				return 0;
-			});
+			$this->sortMaxDown($array, $what);
 			return true;
 		}
 		
@@ -81,49 +53,10 @@ class KeysMover {
 			return true;
 		}
 
-		// echo '<pre>';
-		// print_r($sortingDirection);
-		// print_r($stopKey);
-		// echo '</pre>';
-
 		if ($sortingDirection === 1) {
-			uksort($array, function($prev, $next) use ($what, $stopKey)
-			{
-				// echo '<pre>';
-				// print_r('Prev is: '.$prev.'<br>');
-				// print_r('Next is: '.$next);
-				// echo '</pre>';
-	
-				if ($next === $what) {
-					if ($prev !== $stopKey) {
-						// echo '<pre>';
-						// print_r('sort up');
-						// echo '</pre>';
-						return 1;
-					}
-				}
-				
-				return 0;
-			});
+			$this->sortUp($array, $what, $stopKey);
 		} else {
-			uksort($array, function($prev, $next) use ($what, $stopKey)
-			{
-				// echo '<pre>';
-				// print_r('Prev is: '.$prev.'<br>');
-				// print_r('Next is: '.$next);
-				// echo '</pre>';
-	
-				if ($prev === $what) {
-					if ($next !== $stopKey) {
-						// echo '<pre>';
-						// print_r('sort down');
-						// echo '</pre>';
-						return 1;
-					}
-				}
-				
-				return 0;
-			});
+			$this->sortDown($array, $what, $stopKey);
 		}
 		
 		return true;
@@ -157,4 +90,47 @@ class KeysMover {
 		return $index;
 	}	
 
+	private function sortMaxUp(array &$array, string $key): void
+	{
+		uksort($array, function ($prev, $next) use ($key) {
+			if ($next === $key) {
+				return 1;
+			}
+			return 0;
+		});
+	}
+
+	private function sortMaxDown(array &$array, string $key): void
+	{
+		uksort($array, function ($prev, $next) use ($key) {
+			if ($prev === $key) {
+				return 1;
+			}
+			return 0;
+		});
+	}
+
+	private function sortUp(array &$array, string $key, string $stopKey): void
+	{
+		uksort($array, function ($prev, $next) use ($key, $stopKey) {
+			if ($next === $key) {
+				if ($prev !== $stopKey) {
+					return 1;
+				}
+			}
+			return 0;
+		});
+	}
+
+	private function sortDown(array &$array, string $key, string $stopKey): void
+	{
+		uksort($array, function ($prev, $next) use ($key, $stopKey) {
+			if ($prev === $key) {
+				if ($next !== $stopKey) {
+					return 1;
+				}
+			}
+			return 0;
+		});
+	}
 }
