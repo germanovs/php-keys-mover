@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 class KeysMoverTest extends TestCase {
 
-	public function testMoveKey()
+	public function testMove()
 	{
 
 		$this->moveUp();
@@ -12,6 +12,13 @@ class KeysMoverTest extends TestCase {
 		$this->moveDown();
 		$this->moveDownMax();
 
+		/*
+		to add:
+		- non-existing named positions
+		- integer positions
+		- wrong and non-existing integer positions
+		- with swap
+		*/
 	}
 
 	protected function moveUp()
@@ -26,7 +33,7 @@ class KeysMoverTest extends TestCase {
 		];
 
 		// test 1: common, up, targets by names
-		$mover->moveKey($source, 'four', 'two');
+		$mover->move($source, 'four', 'two');
 		$expected = [
 			'one' => 1,
 			'four' => 4,
@@ -49,7 +56,7 @@ class KeysMoverTest extends TestCase {
 			'five' => 5
 		];
 
-		$mover->moveKey($source, 'two', 'four');
+		$mover->move($source, 'two', 'four');
 		$expected = [
 			'one' => 1,
 			'three' => 3,
@@ -72,7 +79,7 @@ class KeysMoverTest extends TestCase {
 			'five' => 5
 		];
 
-		$mover->moveKey($source, 'five', 'one');
+		$mover->move($source, 'five', 'one');
 		$expected = [
 			'five' => 5,
 			'one' => 1,
@@ -95,7 +102,7 @@ class KeysMoverTest extends TestCase {
 			'five' => 5
 		];
 
-		$mover->moveKey($source, 'one', 'five');
+		$mover->move($source, 'one', 'five');
 		$expected = [
 			'two' => 2,
 			'three' => 3,

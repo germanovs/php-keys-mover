@@ -5,7 +5,7 @@ class KeysMover {
 
 	public $message = '';
 
-	public function moveKey(array &$array, $what, $where, bool $swap = false):bool
+	public function move(array &$array, $what, $where, bool $swap = false):bool
 	{
 		$keys = array_keys($array);
 
