@@ -19,11 +19,12 @@ Contains information about last operation. You can read this to find what excatl
 `move(array &$array, string|integer $key, string|integer $where): bool`
 
 - Moves `$key` in `$where` position inside `$array`.
-- `$key` can be string as key or integer as index.
+- `$key` and `$where` and can be string as key or integer as index.
 - Modifies source array directly.
-- Returns `true` in case of success, `false` on failure.
+- Returns `true` on success and `false` on failure.
 
-Usage
+#### Usage
+
 ```php
 $keyMover = new KeysMover\KeysMover();
 $array = [
@@ -55,7 +56,7 @@ result:
 */
 ```
 
-## Future methods
+## Future plans
 These methods will be available in future versions
 - `shift(array &$array, string|integer $key, integer $shift): bool`
 Moves `$key` by `$shift` positions
@@ -72,6 +73,10 @@ Ex: ```$keysMover->moveAfter($array, 'three', 'two');```
 - `rearrange(array &$array, array $order): bool`
 Rearranges keys in `$array`, using `$order` as pattern
 Ex: ```$keysMover->rearrange($array, ['two', 'three', 'one']);```
+
+Methods `move()` and `shift()` will get `bool $swap = false` argument. This will alow to move replaced key to initial position of moved key.
+
+Please, feel free to open a discussion with your feedback, thoughts, feature proposals etc.
 
 ## License
 MIT
