@@ -18,5 +18,8 @@
 			"KeysMover\\": "src/"
 		}
 	},
-	"require": {}
+	"require": {},
+	"scripts": {
+		"test": "vendor/bin/phpunit tests"
+	}
 }
